@@ -1,241 +1,247 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Vlog</title>
-    <link rel="stylesheet" href="Style.css"> <!-- Hubungkan dengan file CSS -->
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
-        /* Ganti dengan URL gambar latar */
-        background-size: cover;
-        color: black;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Vlog</title>
+  <link rel="stylesheet" href="Style.css"> <!-- Hubungkan dengan file CSS -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
+      /* Ganti dengan URL gambar latar */
+      background-size: cover;
+      color: black;
+    }
 
-      header {
-        text-align: center;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.6);
-        /* Transparan hitam */
-        margin-bottom: 20px;
-      }
+    header {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      /* Transparan hitam */
+      margin-bottom: 20px;
+    }
 
-      header h1 {
-        font-size: 2.5rem;
-        margin: 0;
-      }
+    header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
 
-      header p {
-        font-size: 1.2rem;
-        margin: 5px 0 0;
-      }
+    header p {
+      font-size: 1.2rem;
+      margin: 5px 0 0;
+    }
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
-        /* Transparan putih */
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      /* Transparan putih */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
 
-      .video {
-        margin-bottom: 20px;
-        text-align: center;
-      }
+    .video {
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
-      .video-wrapper {
-        position: relative;
-        width: 100%;
-        max-width: 100%;
-        /* Ukuran maksimal video */
-        overflow: hidden;
-        margin: 0 auto;
-        border-radius: 8px;
-      }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      /* Ukuran maksimal video */
+      overflow: hidden;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
 
+    .landscape iframe {
+      width: 100%;
+      height: 450px;
+    }
+
+    .portrait iframe {
+      width: 100%;
+      height: 650px;
+    }
+
+    .fullscreen-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .fullscreen-button:hover {
+      background-color: #555;
+      margin-bottom: 20px;
+    }
+
+    .button1 {
+      display: inline-block;
+      background-color: #FF0000;
+      /* Warna merah YouTube */
+      color: white;
+      padding: 15px 30px;
+      text-align: center;
+      text-decoration: none;
+      /* Menghilangkan garis bawah pada link */
+      font-size: 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 20px 0;
+      /* Menambahkan margin atas dan bawah */
+    }
+
+    .button1:hover {
+      background-color: #CC0000;
+      /* Warna merah gelap saat hover */
+      margin-bottom: 20px;
+    }
+
+    .description {
+      text-align: center;
+    }
+
+    .video-list {
+      width: 100%;
+      max-width: 1000px;
+      /* Lebar maksimum tetap 1000px */
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .scrollable-list {
+      display: flex;
+      flex-wrap: wrap;
+      /* Mencegah pembungkusan */
+      justify-content: space-between;
+      overflow-x: auto;
+      /* Menambahkan scroll horizontal */
+      padding: 10px 0;
+      /* Padding atas dan bawah */
+    }
+
+    .video-item {
+      margin-right: 10px;
+      /* Jarak antar video */
+      text-align: center;
+      flex: 1 1 300px;
+      /* Mengatur lebar item video agar lebih besar */
+      max-width: 300px;
+      /* Lebar maksimum untuk setiap item video */
+    }
+
+    .video-item iframe {
+      width: 100%;
+      /* Mengatur lebar iframe menjadi 100% dari item */
+      height: 200px;
+      /* Mengatur tinggi iframe untuk memperbesar tampilan */
+      border-radius: 8px;
+      /* Sudut melengkung untuk video */
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    @media (max-width: 768px) {
       .landscape iframe {
-        width: 100%;
-        height: 450px;
+        height: 300px;
+        /* Perkecil ukuran video pada layar kecil */
       }
 
       .portrait iframe {
+        height: 500px;
+        /* Perkecil ukuran video pada layar kecil */
+      }
+
+      .video-item iframe {
         width: 100%;
-        height: 650px;
+        /* Ukuran video item pada layar kecil */
+        height: auto;
+        /* Tinggi otomatis */
       }
-
-      .fullscreen-button {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #000;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 1rem;
-      }
-
-      .fullscreen-button:hover {
-        background-color: #555;
-        margin-bottom: 20px;
-      }
-
-      .button1 {
-        display: inline-block;
-        background-color: #FF0000;
-        /* Warna merah YouTube */
-        color: white;
-        padding: 15px 30px;
-        text-align: center;
-        text-decoration: none;
-        /* Menghilangkan garis bawah pada link */
-        font-size: 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin: 20px 0;
-        /* Menambahkan margin atas dan bawah */
-      }
-
-      .button1:hover {
-        background-color: #CC0000;
-        /* Warna merah gelap saat hover */
-        margin-bottom: 20px;
-      }
-
-      .description {
-        text-align: center;
-      }
-.video-list {
-    width: 100%;
-    max-width: 1000px; /* Lebar maksimum tetap 1000px */
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.scrollable-list {
-    display: flex;
-    flex-wrap: wrap; /* Mencegah pembungkusan */
-    justify-content: space-between;
-    overflow-x: auto; /* Menambahkan scroll horizontal */
-    padding: 10px 0; /* Padding atas dan bawah */
-}
-
-.video-item {
-    margin-right: 10px; /* Jarak antar video */
-    text-align: center;
-    flex: 1 1 300px; /* Mengatur lebar item video agar lebih besar */
-    max-width: 300px; /* Lebar maksimum untuk setiap item video */
-}
-
-.video-item iframe {
-    width: 100%; /* Mengatur lebar iframe menjadi 100% dari item */
-    height: 200px; /* Mengatur tinggi iframe untuk memperbesar tampilan */
-    border-radius: 8px; /* Sudut melengkung untuk video */
-}
-
-      footer {
-        text-align: center;
-        padding: 10px;
-        background: rgba(0, 0, 0, 0.6);
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-      }
-
-      @media (max-width: 768px) {
-        .landscape iframe {
-          height: 300px;
-          /* Perkecil ukuran video pada layar kecil */
-        }
-
-        .portrait iframe {
-          height: 500px;
-          /* Perkecil ukuran video pada layar kecil */
-        }
-
-        .video-item iframe {
-          width: 100%;
-          /* Ukuran video item pada layar kecil */
-          height: auto;
-          /* Tinggi otomatis */
-        }
-      }
-    </style>
+    }
+  </style>
 </head>
+
 <body>
-    <main class="container">
-        <section class="video">
-            <h2>Selalu Update jika ada video terbaru rorrrr, wkwk</h2>
-            <div id="video-container" class="video-wrapper landscape">
-                <iframe
-                    id="video-frame"
-                    width="560"
-                    height="315"
-                    src="https://www.youtube.com/embed/L0nNgt6hEXg"
-                    title="Vlog Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                    allowfullscreen>
-                </iframe>
-            </div>
-            <button id="toggle-fullscreen" class="fullscreen-button">Ganti Mode</button> <!-- Tombol Ganti Mode -->
-            <a href="https://youtu.be/L0nNgt6hEXg" target="_blank" class="button1">Tonton Video di YouTube</a>
-        </section>
+  <main class="container">
+    <section class="video">
+      <h2>Selalu Update jika ada video terbaru rorrrr, wkwk</h2>
+      <div id="video-container" class="video-wrapper landscape">
+        <iframe id="video-frame" width="560" height="315" src="https://www.youtube.com/embed/L0nNgt6hEXg"
+          title="Vlog Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <button id="toggle-fullscreen" class="fullscreen-button">Ganti Mode</button> <!-- Tombol Ganti Mode -->
+      <a href="https://youtu.be/L0nNgt6hEXg" target="_blank" class="button1">Tonton Video di YouTube</a>
+    </section>
 
-        <section class="video-list">
-            <h2>Daftar Video Lainnya</h2>
-            <div class="scrollable-list">
-                <div class="video-item">
-                    <iframe
-                        width="280"
-                        height="157"
-                        src="https://www.youtube.com/embed/z9uRFBGpHoE"
-                        title="Vlog Video 1"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                        allowfullscreen>
-                    </iframe>
+    <section class="video-list">
+      <h2>Daftar Video Lainnya</h2>
+      <div class="scrollable-list">
+        <div class="video-item">
+          <iframe width="280" height="157" src="https://www.youtube.com/embed/z9uRFBGpHoE" title="Vlog Video 1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowfullscreen>
+          </iframe>
 
-                </div>
-                <div class="video-item">
-                    <iframe
-                        width="280"
-                        height="157"
-                        src="https://www.youtube.com/embed/yyHQAeJhiuM"
-                        title="Vlog Video 2"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                        allowfullscreen>
-                    </iframe>
-                   
+        </div>
+        <div class="video-item">
+          <iframe width="280" height="157" src="https://www.youtube.com/embed/u1xWFL5Nrtk" title="Vlog Video 2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowfullscreen>
+          </iframe>
+        </div>
 
-                </div>
-                <!-- Tambahkan lebih banyak video sesuai kebutuhan -->
-            </div>
-        </section>
-    </main>
 
-    <script>
-        // Menangani tombol untuk mengubah posisi video (portrait/landscape)
-        const toggleButton = document.getElementById('toggle-fullscreen');
-        const videoContainer = document.getElementById('video-container');
+        <div class="video-item">
+          <iframe width="280" height="157" src="https://www.youtube.com/embed/yyHQAeJhiuM" title="Vlog Video 3"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowfullscreen>
+          </iframe>
+      </div>
+    </section>
+  </main>
 
-        toggleButton.addEventListener('click', () => {
-            // Toggle antara landscape dan portrait
-            if (videoContainer.classList.contains('landscape')) {
-                videoContainer.classList.remove('landscape');
-                videoContainer.classList.add('portrait');
-                toggleButton.textContent = "Ganti ke Lanskap";
-            } else {
-                videoContainer.classList.remove('portrait');
-                videoContainer.classList.add('landscape');
-                toggleButton.textContent = "Ganti ke Potret";
-            }
-        });
-    </script>
+  <script>
+    // Menangani tombol untuk mengubah posisi video (portrait/landscape)
+    const toggleButton = document.getElementById('toggle-fullscreen');
+    const videoContainer = document.getElementById('video-container');
+
+    toggleButton.addEventListener('click', () => {
+      // Toggle antara landscape dan portrait
+      if (videoContainer.classList.contains('landscape')) {
+        videoContainer.classList.remove('landscape');
+        videoContainer.classList.add('portrait');
+        toggleButton.textContent = "Ganti ke Lanskap";
+      } else {
+        videoContainer.classList.remove('portrait');
+        videoContainer.classList.add('landscape');
+        toggleButton.textContent = "Ganti ke Potret";
+      }
+    });
+  </script>
 </body>
+
 </html>
